@@ -11,6 +11,12 @@ defmodule TamnoonWordle.Router do
     gzip: false
   )
 
+  plug(Plug.Static,
+    at: "/",
+    from: :tamnoon_wordle,
+    gzip: false
+  )
+
   plug :match
   plug :dispatch
 

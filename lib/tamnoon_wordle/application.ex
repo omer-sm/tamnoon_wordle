@@ -12,6 +12,13 @@ defmodule TamnoonWordle.Application do
        [
          [
            router: TamnoonWordle.Router,
+           initial_state: %{
+            current_guess: "",
+            allow_submit: false,
+            current_guess_attempt: 0,
+            target_word: "HELLO",
+           },
+           methods_modules: [TamnoonWordle.Methods.GameMethods]
          ]
        ]}
     ]

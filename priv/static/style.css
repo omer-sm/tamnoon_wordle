@@ -1,0 +1,17 @@
+.text-upper-not-placeholder {
+  text-transform: uppercase;
+}
+
+.text-upper-not-placeholder::placeholder {
+  text-transform: none;
+}
+
+.np-btn:disabled {
+  pointer-events: none;
+  opacity: 0.75;
+  box-shadow: none;
+}
+
+.pe-none {
+  pointer-events: none;
+}

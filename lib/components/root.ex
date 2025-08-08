@@ -15,6 +15,7 @@ defmodule TamnoonWordle.Components.Root do
         <script src="tamnoon/tamnoon_dom.js"></script>
         <script src="tamnoon/tamnoon_driver.js"></script>
         <link rel="icon" type="image/x-icon" href="/tamnoon/tamnoon_icon.ico">
+        <link rel="stylesheet" href="/style.css">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/omer-sm/neumorph.scss@master/dist/css/dark/neumorph-full-dark.min.css">
       </head>
