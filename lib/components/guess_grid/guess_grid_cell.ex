@@ -5,7 +5,8 @@ defmodule TamnoonWordle.Components.GuessGrid.GuessGridCell do
   @color_classes [
     gray: "np-bg-secondary",
     yellow: "np-bg-warning",
-    green: "np-bg-success"
+    green: "np-bg-success",
+    none: ""
   ]
 
   def heex() do
@@ -32,7 +33,7 @@ defmodule TamnoonWordle.Components.GuessGrid.GuessGridCell do
     change_style_action = DOM.Actions.SetAttribute.new!(%{
       attribute: "class",
       target: target_cell,
-      value: "np-element np-square-md mx-1 np-shadow-less pe-none np-3x text-center #{@color_classes[color]}"
+      value: "np-element np-square-md mx-1 np-shadow-less pe-none #{if letter != "", do: "np-3x text-center", else: ""} #{@color_classes[color]}"
     })
 
     [change_content_action, change_style_action]

@@ -13,7 +13,20 @@ defmodule TamnoonWordle.Methods.GameMethods do
       |> Enum.filter(&(?A <= &1 and ?Z >= &1))
       |> to_string()
 
-    {%{current_guess: processed_guess, allow_submit: String.length(processed_guess) == 5}}
+    row = state[:current_guess_attempt]
+    padding = List.duplicate("", 5 - String.length(processed_guess))
+
+    actions =
+      processed_guess
+      |> String.codepoints()
+      |> Enum.concat(padding)
+      |> Enum.with_index()
+      |> Enum.flat_map(fn {letter, col} ->
+        TamnoonWordle.Components.GuessGrid.GuessGridCell.fill_cell(row, col, letter, :none)
+      end)
+
+    {%{current_guess: processed_guess, allow_submit: String.length(processed_guess) == 5},
+     actions}
   end
 
   defmethod :submit_guess do
@@ -34,9 +47,7 @@ defmodule TamnoonWordle.Methods.GameMethods do
         do:
           fill_cells_actions ++
             [
-              TamnoonWordle.Components.GameOverMessage.display_game_over_message(
-                is_guess_correct
-              )
+              TamnoonWordle.Components.GameOverMessage.display_game_over_message(is_guess_correct)
             ],
         else: fill_cells_actions
 
