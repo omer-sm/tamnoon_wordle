@@ -26,7 +26,26 @@ defmodule TamnoonWordle.Methods.GameMethods do
         TamnoonWordle.Components.GuessGrid.GuessGridCell.fill_cell(row, col, letter, color)
       end)
 
-    {%{current_guess: "", current_guess_attempt: row + 1, allow_submit: false}, fill_cells_actions}
+    is_guess_correct = state[:current_guess] == state[:target_word]
+    is_game_over = row == 4 || is_guess_correct
+
+    all_actions =
+      if is_game_over,
+        do:
+          fill_cells_actions ++
+            [
+              TamnoonWordle.Components.GameOverMessage.display_game_over_message(
+                is_guess_correct
+              )
+            ],
+        else: fill_cells_actions
+
+    {%{
+       current_guess: "",
+       current_guess_attempt: row + 1,
+       allow_submit: false,
+       game_over: is_game_over
+     }, all_actions}
   end
 
   defp score_guess(guess, target_word) do

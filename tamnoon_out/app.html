@@ -21,7 +21,7 @@
 </nav>
       <div class="container mt-4">
   <div class="row">
-    <h2 class="text-center w-100">Tamnoonle</h2>
+    <h2 class="text-center w-100">TAMNOONLE</h2>
   </div>
 
   
@@ -201,14 +201,21 @@
 
 
 
-  <div class="row w-100 justify-content-center my-3">
-  <div class=" w-50 d-flex flex-row p-3 np-shadow-less">
+  <div class="row w-100 justify-content-center my-3 tmnn-game_over-hidden" >
+  <div class="w-50 d-flex flex-row p-3 np-shadow-less">
     <input type="text" id="guess-input"
       class="np-form-element w-100 text-upper-not-placeholder tmnn-current_guess-value tmnnevent-oninput-update_guess"
       placeholder="Type here.."  >
 
     <button class="np-btn np-square-sm mx-2 p-0 np-form-element tmnn-not-allow_submit-disabled tmnnevent-onclick-submit_guess"
      disabled >&gt;</button>
+  </div>
+</div>
+
+  <div class="row w-100 justify-content-center my-3 tmnn-not-game_over-hidden"  hidden>
+  <div class="w-50 d-flex flex-column p-1 np-shadow-less justify-content-center np-1-5x text-center">
+   <p id="game-over-message-content" class="mb-0"></p>
+   <p class="mb-0">The answer was: <b class="font-weight-bold tmnn-target_word-innerText"></b></p>
   </div>
 </div>
 

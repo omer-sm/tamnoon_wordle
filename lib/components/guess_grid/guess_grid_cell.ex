@@ -23,7 +23,8 @@ defmodule TamnoonWordle.Components.GuessGrid.GuessGridCell do
         selector_value: "guess-cell-#{row}-#{col}"
       })
 
-    change_content_action = DOM.Actions.SetInnerHTML.new!(%{
+    change_content_action = DOM.Actions.SetAttribute.new!(%{
+      attribute: "textContent",
       target: target_cell,
       value: letter
     })

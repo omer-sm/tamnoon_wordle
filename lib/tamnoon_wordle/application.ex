@@ -17,6 +17,7 @@ defmodule TamnoonWordle.Application do
             allow_submit: false,
             current_guess_attempt: 0,
             target_word: "HELLO",
+            game_over: false
            },
            methods_modules: [TamnoonWordle.Methods.GameMethods]
          ]
