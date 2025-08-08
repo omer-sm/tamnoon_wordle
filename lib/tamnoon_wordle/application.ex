@@ -12,13 +12,13 @@ defmodule TamnoonWordle.Application do
        [
          [
            router: TamnoonWordle.Router,
-           initial_state: %{
+           initial_state: fn -> %{
             current_guess: "",
             allow_submit: false,
             current_guess_attempt: 0,
-            target_word: "HELLO",
+            target_word: TamnoonWordle.Wordbank.get_daily_word(),
             game_over: false
-           },
+           } end,
            methods_modules: [TamnoonWordle.Methods.GameMethods]
          ]
        ]}
